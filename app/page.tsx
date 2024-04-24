@@ -1,6 +1,10 @@
+import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+  let href = userId ? "/journal" : "/new-user";
+
   return (
     <div className="w-screen h-screen bg-black text-white flex items-center">
       <div className="container max-w-[660px]">
@@ -9,7 +13,7 @@ export default function Home() {
           Track your mood based on what you write!
         </p>
         <div>
-          <Link href="/journal">
+          <Link href={href}>
             <button className="bg-blue-800 p-3 rounded-lg text-xl">
               Get Started
             </button>
