@@ -16,3 +16,19 @@ export const newEntry = async () => {
     throw new Error("Something went wrong on API server!");
   }
 };
+
+export const updateEntry = async (id: string, content: string) => {
+  const res = await fetch(
+    new Request(createURL(`/api/journal/${id}`), {
+      method: "PATCH",
+      body: JSON.stringify({ content }),
+    })
+  );
+
+  if (res.ok) {
+    const data = res.json();
+    return data.data;
+  } else {
+    throw new Error("Something went wrong on API server!");
+  }
+};
