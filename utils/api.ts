@@ -26,8 +26,7 @@ export const updateEntry = async (id: string, content: string) => {
   );
 
   if (res.ok) {
-    const data = res.json();
-    return data.data;
+    return res.json();
   } else {
     throw new Error("Something went wrong on API server!");
   }

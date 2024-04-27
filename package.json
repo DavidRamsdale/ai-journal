@@ -11,10 +11,12 @@
   "dependencies": {
     "@clerk/nextjs": "^5.0.1",
     "@prisma/client": "^5.12.1",
+    "langchain": "^0.1.36",
     "next": "14.2.1",
     "react": "^18",
     "react-autosave": "^0.4.4",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zod": "^3.23.4"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -14,6 +14,15 @@ export const POST = async (request: Request) => {
           id: user.id,
         },
       },
+      analysis: {
+        create: {
+          mood: "Neutral",
+          subject: "None",
+          negative: false,
+          summary: "None",
+          color: "#0101fe",
+        },
+      },
     },
   });
 

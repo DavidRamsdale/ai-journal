@@ -20,7 +20,6 @@ const getEntries = async () => {
 
 const JournalPage = async () => {
   const entries = await getEntries();
-  console.log("🚀 ~ JournalPage ~ entries:", entries);
   return (
     <div className="px-6 py-8 bg-zinc-100/50 h-full">
       <h1 className="text-4xl mb-12">Journals</h1>
