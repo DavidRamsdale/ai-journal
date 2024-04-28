@@ -4,18 +4,19 @@ import { updateEntry } from "@/utils/api";
 import { Analysis, JournalEntry } from "@prisma/client";
 import { FC, useState } from "react";
 import { useAutosave } from "react-autosave";
+import Spinner from "./Spinner";
 
 interface EditorProps {
   entry: JournalEntry;
 }
 
 const Editor: FC<EditorProps> = ({ entry }) => {
-  // Fix rerendering issue
+  // Fix rerendering performance issue
   const [value, setValue] = useState(entry.content);
   const [isSaving, setIsSaving] = useState(false);
   const [currentEntry, setEntry] = useState(entry);
 
-  const { summary, mood, negative, subject, color } =
+  const { summary, mood, negative, subject } =
     currentEntry?.analysis as Analysis;
 
   const analysisData = [
@@ -47,15 +48,18 @@ const Editor: FC<EditorProps> = ({ entry }) => {
       setIsSaving(false);
     },
   });
+
   return (
-    <div className="grid grid-cols-3 w-full h-full">
+    <div className="grid grid-cols-3 w-full h-full relative">
+      <div className="absolute left-0 top-0 p-2">
+        {isSaving ? (
+          <Spinner />
+        ) : (
+          <div className="w-[16px] h-[16px] rounded-full bg-green-500"></div>
+        )}
+      </div>
       <div className="col-span-2">
         <div className="w-full h-full">
-          {isSaving && (
-            <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-              <p className="text-white text-2xl">Saving...</p>
-            </div>
-          )}
           <textarea
             className="w-full h-full p-8 text-xl outline-none"
             value={value}

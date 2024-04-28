@@ -1,5 +1,6 @@
 import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
+import Question from "@/components/Question";
 import { getUserFromClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
 import Link from "next/link";
@@ -13,6 +14,9 @@ const getEntries = async () => {
     orderBy: {
       createdAt: "desc",
     },
+    include: {
+      analysis: true,
+    },
   });
 
   return entries;
@@ -23,6 +27,9 @@ const JournalPage = async () => {
   return (
     <div className="px-6 py-8 bg-zinc-100/50 h-full">
       <h1 className="text-4xl mb-12">Journals</h1>
+      <div className="my-8">
+        <Question />
+      </div>
       <div className="grid grid-cols-3 gap-4">
         <NewEntryCard />
         {entries.map((entry) => (

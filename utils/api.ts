@@ -6,7 +6,7 @@ export const newEntry = async () => {
   const res = await fetch(
     new Request(createURL("/api/journal"), {
       method: "POST",
-      body: JSON.stringify({ content: "new journal entry" }),
+      body: JSON.stringify({ content: "Write about your day..." }),
     })
   );
 
@@ -24,6 +24,22 @@ export const updateEntry = async (id: string, content: string) => {
       body: JSON.stringify({ content }),
     })
   );
+
+  if (res.ok) {
+    return res.json();
+  } else {
+    throw new Error("Something went wrong on API server!");
+  }
+};
+
+export const askQuestion = async (question: string) => {
+  const res = await fetch(
+    new Request(createURL("/api/question"), {
+      method: "POST",
+      body: JSON.stringify({ question }),
+    })
+  );
+  console.log("res", res);
 
   if (res.ok) {
     return res.json();
