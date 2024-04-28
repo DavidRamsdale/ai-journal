@@ -8,6 +8,10 @@ export const PATCH = async (req: Request, { params }: any) => {
   const { content } = await req.json();
   const user = await getUserFromClerkID();
 
+  if (!user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const updatedEntry = await prisma.journalEntry.update({
     where: {
       userId_id: {
@@ -35,6 +39,7 @@ export const PATCH = async (req: Request, { params }: any) => {
     },
     create: {
       entryId: updatedEntry.id,
+      userId: user.id,
       ...analysis,
     },
     update: { ...analysis },

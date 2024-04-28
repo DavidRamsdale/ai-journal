@@ -21,6 +21,8 @@ export const POST = async (request: Request) => {
           negative: false,
           summary: "None",
           color: "#0101fe",
+          sentimentScore: 0,
+          userId: user.id,
         },
       },
     },

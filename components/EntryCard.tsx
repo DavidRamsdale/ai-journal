@@ -1,7 +1,6 @@
 import { JournalEntry } from "@prisma/client";
 
 const EntryCard = ({ entry }: any) => {
-  console.log("🚀 ~ EntryCard ~ entry:", entry);
   const date = new Date(entry.createdAt).toDateString();
   return (
     <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow cursor-pointer">
