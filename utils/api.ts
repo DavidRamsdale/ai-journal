@@ -39,7 +39,6 @@ export const askQuestion = async (question: string) => {
       body: JSON.stringify({ question }),
     })
   );
-  console.log("res", res);
 
   if (res.ok) {
     return res.json();
