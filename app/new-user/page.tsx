@@ -1,5 +1,6 @@
 import { prisma } from "@/utils/db";
 import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 import React from "react";
 
 const createUser = async () => {
@@ -18,16 +19,13 @@ const createUser = async () => {
       },
     });
   }
+
+  redirect("/journal");
 };
 
 const NewUser: React.FC = async () => {
   await createUser();
-  return (
-    <div>
-      <h1>Hello, world!</h1>
-      <p>Welcome to my page.</p>
-    </div>
-  );
+  return <div>...loading</div>;
 };
 
 export default NewUser;
