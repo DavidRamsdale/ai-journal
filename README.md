@@ -18,9 +18,9 @@ AI Journal is a personal journaling application powered by OpenAI, designed to t
 - **Easy to Use:** AI Journal has a simple and intuitive interface that makes journaling easy and enjoyable.
 - **Data Persistence**: Save and load your journal entries effortlessly.
 
-##TODO
-[] Stripe for subscription
-[] Mobile Design
+## TODO
+- Stripe for subscription []
+- Mobile Design []
 
 ## Getting Started
 
