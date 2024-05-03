@@ -2,7 +2,7 @@
 
 AI Journal is a personal journaling application powered by OpenAI, designed to track your mood based on your entries. It offers insights into your emotional state over time and provides a platform for self-reflection.
 
-## Technolgy
+## Technology
 - Typescript
 - Next 14
 - OpenAI
