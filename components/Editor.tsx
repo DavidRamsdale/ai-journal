@@ -4,16 +4,17 @@ import { updateEntry } from "@/utils/api";
 import { Analysis, JournalEntry } from "@prisma/client";
 import { FC, useState } from "react";
 import { useAutosave } from "react-autosave";
-import Spinner from "./Spinner";
+import Spinner from "@/components/Spinner";
 
 interface EditorProps {
   entry: JournalEntry;
+  isSavingState?: boolean;
 }
 
-const Editor: FC<EditorProps> = ({ entry }) => {
+const Editor: FC<EditorProps> = ({ entry, isSavingState = false }) => {
   // Fix rerendering performance issue
   const [value, setValue] = useState(entry.content);
-  const [isSaving, setIsSaving] = useState(false);
+  const [isSaving, setIsSaving] = useState(isSavingState);
   const [currentEntry, setEntry] = useState(entry);
 
   const { summary, mood, negative, subject } =

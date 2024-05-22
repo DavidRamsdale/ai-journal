@@ -1,10 +1,18 @@
 import { analyze } from "@/utils/ai";
 import { getUserFromClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
+import { Analysis, JournalEntry } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
-export const PATCH = async (req: Request, { params }: any) => {
+interface ResponseData {
+  data: JournalEntry & { analysis: Analysis };
+}
+
+export const PATCH = async (
+  req: Request,
+  { params }: any
+): Promise<NextResponse | NextResponse<ResponseData>> => {
   const { content } = await req.json();
   const user = await getUserFromClerkID();
 
